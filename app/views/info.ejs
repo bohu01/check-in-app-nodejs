@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SINA US</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <center><h2><img style ="width:30%" src="/images/sinalogo.png">CHECK IN SYSTEM</h2></center>
+    <hr>
+    <center><h3><%= user.firstname %> <%= user.lastname %></h3>
+    </center>
+    <div class = "container" style="margin-top:60px; margin-left:100px"> 
+    <table class="table">
+      <tr>
+        <td>Date</td>
+        <td>Check In</td> 
+        <td>Check Out</td>
+        <td>Hours</td>
+        <td>Notes</td>
+      </tr>
+      
+    <% items.forEach(function(item){ %>
+      <tr>
+      <td><%= item.date %></td>
+      <td>
+      <% item.checkin_records.forEach(function(checkin_item){ %>
+        <%= checkin_item.toLocaleTimeString() %>
+        <br>
+      <% }) %>
+      </td>
+      <td>
+      <% item.checkout_records.forEach(function(checkout_item){ %>
+        <%= checkout_item.toLocaleTimeString() %>
+        <br>
+      <% }) %>
+      </td>
+      <td>
+      <% item.hours.forEach(function(hours_item){ %>
+        <%= hours_item %>
+        <br>
+      <% }) %>
+      </td>
+      <td style="width:40%">
+      <% item.notes.forEach(function(notes_item){ %>
+        <%= notes_item %>
+        <br>
+      <% }) %>        
+      </td>
+      </tr>
+    <% }) %>
+    </table>
+      
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.3.5/bootstrap-select.min.js"></script>
+    <script type="text/javascript">
+    var myVar=setInterval(function(){myTimer()},1000);
+    function myTimer() {
+      var d = new Date().toLocaleString();
+      document.getElementById("clock").innerHTML = d;
+    }
+    </script>
+
+  </body>
+</html>
