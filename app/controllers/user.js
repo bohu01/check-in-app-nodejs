@@ -225,7 +225,8 @@ function addRecord(flag, user_id, date, month, year, record_string){
 
 
 exports.checkInfo = function(req,res){
-  Record.find({user_id:req.user.id}, function(err,items){
+  var user_id = req.param('userId')
+  Record.find({user_id:user_id}, function(err,items){
     if(err){
       console.log(err)
     }
@@ -262,6 +263,15 @@ exports.doSearch =function(req,res){
   })
 }
 
+exports.userList = function(req,res){
+  User.find(function(err,users){
+    if(err){
+      console.log(err)
+    }
+    console.log(users)
+    res.render('userlist', {users:users})
+  })
+}
 exports.test = function(req, res){
   res.json({message:"ok"})
 }

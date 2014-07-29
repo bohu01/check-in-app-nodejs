@@ -20,19 +20,11 @@
     <center><h2><img style ="width:30%" src="/images/sinalogo.png">CHECK IN SYSTEM</h2></center>
     <hr>
     <div class = "container" style="margin-top:60px;">
-    <form role="form" action="/search" method="post">
-      Firstname: <input type="text" name="firstname">
-      Lastname: <input type="text" name="lastname">
-      YEAR: <input type="text" name="year" value="2014">
-      MONTH:<input type="text" name="month">
-      <center>
-      <button style="margin-top:60px;" class="btn btn-large">Submit</button>
-      </center>
-    </form>
-    <p><%= message %></p>
-    </div>
-    <div class = "container" style="margin-top:60px;">
-    <a href="/userlist">List of all Users</a>
+    <% users.forEach(function(user){ %>
+      <a href="/info/<%= user.id %>"> <%= user.firstname %> <%= user.lastname %></a>
+      <br>
+    <% }) %>
+      
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
